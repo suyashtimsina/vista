@@ -1,0 +1,12 @@
+import discord
+from discord.ext import commands
+from datetime import timedelta
+from discord import app_commands
+from main import MyBot
+
+class """Welcome"""(commands.Cog):
+    def __init__(self, bot: MyBot):
+        self.bot = bot
+
+async def setup(bot: commands.Bot):
+    await bot.add_cog("""Welcome"""(bot))
