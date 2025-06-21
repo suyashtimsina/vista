@@ -8,26 +8,56 @@ class Mod(commands.Cog):
     def __init__(self, bot: MyBot):
         self.bot = bot
 
-    # < ____________________________ TIMEOUT COMMAND ____________________________ >
-    @app_commands.command(name="timeout",description="Timeout aa user from the guild.")
-    @app_commands.describe(member="Mention the member", reason="Reason for timeout")
-    @app_commands.checks.has_permissions(moderate_members = True)
-    @app_commands.checks.bot_has_permissions(moderate_members = True)
-    async def timeout(self, interaction: discord.Interaction, member: discord.Member, *, minutes: int, reason: str
-        ):  
-        delta = timedelta(minutes=minutes)
-        await interaction.response.defer(thinking=True)
-        await member.timeout(delta,reason=reason)
-        await interaction.followup.send(f"{member} has been timed out for `{reason}`.")
+    ...
 
-    @timeout.error
-    async def on_error(interaction: discord.Interaction, error: commands.CommandError):
-        if isinstance(error, commands.MissingPermissions):
-            await interaction.response.send_message("You don't have permission to use this command!")
-        elif isinstance(error, commands.BotMissingPermissions):
-            await interaction.response.send_message("Bot has no permissions!")
+    # class ModButtons(discord.ui.View):
+    #     def __init__(self, cog):
+    #         super().__init__(timeout=None)
+    #         self.cog = cog
 
 
+    #     @discord.ui.button(label="Change Nickname", style=discord.ButtonStyle.blurple)
+    #     async def ChangeNick(self, interaction: discord.Interaction, button: discord.ui.Button):
+    #         await interaction.response.send_message(f"The user's nickname has been changed to `member.nick`")
+            
+    
+    # @commands.command(aliases=["edit"])
+    # async def mod(self, ctx, member: discord.Member):
+    #     embed = discord.Embed(
+    #         title="Punish the user",
+    #         description=(f"What do you want me to do to the user: <@{member.id}>"),
+    #         color=discord.Color.blue()
+    #     )
+    #     view = self.ModButtons(self)
+    #     await ctx.send(embed=embed,view = view)
+
+
+        
+
+
+
+
+
+    # # < ____________________________ TIMEOUT COMMAND ____________________________ >
+    # @app_commands.command(name="timeout",description="Timeout aa user from the guild.")
+    # @app_commands.describe(member="Mention the member", reason="Reason for timeout")
+    # @app_commands.checks.has_permissions(moderate_members = True)
+    # @app_commands.checks.bot_has_permissions(moderate_members = True)
+    # async def timeout(self, interaction: discord.Interaction, member: discord.Member, *, minutes: int, reason: str
+    #     ):  
+    #     delta = timedelta(minutes=minutes)
+    #     await interaction.response.defer(thinking=True)
+    #     await member.timeout(delta,reason=reason)
+    #     await interaction.followup.send(f"{member} has been timed out for `{reason}`.")
+
+    # @timeout.error
+    # async def on_error(interaction: discord.Interaction, error: commands.CommandError):
+    #     if isinstance(error, commands.MissingPermissions):
+    #         await interaction.response.send_message("You don't have permission to use this command!")
+    #     elif isinstance(error, commands.BotMissingPermissions):
+    #         await interaction.response.send_message("Bot has no permissions!")
+
+# ________________________________________________________________________________________________________________
 
     # # < ____________________________ BAN COMMAND ____________________________ >
     # @app_commands.command(name="ban", description="Ban a user from the guild.")

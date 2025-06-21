@@ -7,7 +7,7 @@ load_dotenv()
 
 
 exts = {
-    "cogs.mod",
+    "cogs.modify",
     "cogs.welcomer",
     "cogs.error",
     "cogs.scrims"
