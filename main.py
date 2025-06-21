@@ -33,10 +33,10 @@ class MyBot(commands.Bot):
         
 bot = MyBot(command_prefix=".", intents=discord.Intents.all())
 
-@bot.command(name='add')
-async def add(ctx, num1: float, num2: float):
-    result = num1 + num2
-    await ctx.send(f"The sum of {num1} and {num2} is **{result}**")
+@bot.command()
+async def ping(ctx):
+    latency = bot.latency  
+    await ctx.send(f"Ping: `{latency*1000:.2f}`ms")
 
 if __name__=="__main__":
         bot.run(os.getenv("DISCORD_TOKEN"))
